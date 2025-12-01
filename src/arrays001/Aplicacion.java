@@ -13,6 +13,7 @@ public class Aplicacion {
 			System.out.println("2) Imprimir array predefinido.");
 			System.out.println("3) Imprimir lista de personas.");
 			System.out.println("4) Imprimir array de enteros aleatorios.");
+			System.out.println("5) Imprimir array de personas indeterminadas.");
 			System.out.println("0) Salir.");
 			opcion = s.nextInt();
 			switch (opcion) {
@@ -31,6 +32,9 @@ public class Aplicacion {
 				break;
 			case 4:
 				Ejemplos.imprimirArrayEnterosAleatorios(10);
+				break;
+			case 5:
+				Ejemplos.imprimirArrayPersonasIndeterminadas(3);
 				break;
 			default:
 				System.out.println("Opción incorrecta.");

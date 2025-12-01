@@ -1,6 +1,7 @@
 package arrays001;
 
 import java.lang.reflect.Array;
+import java.util.Scanner;
 
 public abstract class Ejemplos {
 
@@ -49,8 +50,29 @@ public abstract class Ejemplos {
 	public static void imprimirArrayPersonasIndeterminadas(int longitud) {
 		//Pida por teclado tantos nombres como longitud tiene el array
 		//y los muestra por pantalla ("La persona 1 es Pepe", por ejemplo).
+		String nombres[]=new String[longitud];
+		Scanner s=new Scanner(System.in);
+		for(int i=0;i<nombres.length;i++) {
+			System.out.println("Introduce un nombre:");
+			nombres[i]=s.next();
+		}
+		for(int i=0;i<nombres.length;i++) {
+			System.out.println("La persona "+(i+1)+" se llama "+nombres[i]);
+		}
+		Ejemplos.imprimirArrayStringInverso(nombres);
 	}
 	
+	public static void imprimirArrayStringInverso(String arrayStrings[]) {
+		String cadenaImprimir="{";
+		for(int i=arrayStrings.length-1;i>=0;i--) {
+			cadenaImprimir+=arrayStrings[i];
+			if(i>0)
+				cadenaImprimir+=",";			
+		}
+		cadenaImprimir+="}";
+		System.out.println(cadenaImprimir);
+	}
+		
 	public static void imprimirArrayEnteros(int arrayEnteros[]) {
 		String cadenaImprimir="{";
 		for(int i=0;i<arrayEnteros.length;i++) {
@@ -68,6 +90,14 @@ public abstract class Ejemplos {
 			System.out.println("La persona "+(i+1)+" se llama "+arrayPersonas[i]);
 	}
 	
-	public static void imprimirLoteria() {}
+	/**
+	 * Imprimir seis números aleatorios entre el 1 y el 49 no repetidos.
+	 */
+	public static void imprimirApuestaLoteria() {}
+	
+	public static int[] ordenarArrayEnteros(int arrayEnteros[]) {
+		int arrayOrdenado[]=new int[arrayEnteros.length];
+		return arrayOrdenado;
+	}
 
 }
