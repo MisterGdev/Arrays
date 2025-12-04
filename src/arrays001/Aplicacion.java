@@ -3,6 +3,7 @@ package arrays001;
 import java.util.Scanner;
 
 public class Aplicacion {
+	
 
 	public Aplicacion() {
 		int opcion = -1;

@@ -5,6 +5,13 @@ import java.util.Scanner;
 
 public abstract class Ejemplos {
 
+	public static boolean DEPURACION = true;
+	/**
+	 * Genera un numero aleatorio entre le minimo y el maximo
+	 * @param minimo
+	 * @param maximo
+	 * @return
+	 */
 	public static int generarNumeroAleatorio(int minimo, int maximo) {
 		/*
 		 * int resultadoFinal;
@@ -93,11 +100,45 @@ public abstract class Ejemplos {
 	/**
 	 * Imprimir seis números aleatorios entre el 1 y el 49 no repetidos.
 	 */
-	public static void imprimirApuestaLoteria() {}
+	
+	public static void imprimirApuestaLoteria() {
+		int apuestas[] = new int [6];
+		for (int i = 0; i < apuestas.length; i++) {
+			int numeroAleatorio = Ejemplos.generarNumeroAleatorio(1,50);
+			while(Ejemplos.existeNumero(numeroAleatorio, apuestas)) {
+				//System.out.println("Numero repetido " + numeroAleatorio);
+				imprimirTraza("Numero repetido: " + numeroAleatorio);
+				numeroAleatorio = Ejemplos.generarNumeroAleatorio(1,50);
+			}
+			apuestas[i] = numeroAleatorio;
+		}
+		Ejemplos.imprimirArrayEnteros(apuestas);
+		
+		//for(int i = 0;i < 6; i++) {
+		//System.out.println(generarNumeroAleatorio(1,50));
+		//}
+	}
+	
+	public static boolean existeNumero(int n, int array[]) {
+		boolean existe = false;
+		for (int i = 0; i < array.length ; i++) {
+			if(array[i] == n) {
+				existe = true;
+				break;
+			}
+		}
+		return existe;
+	}
 	
 	public static int[] ordenarArrayEnteros(int arrayEnteros[]) {
 		int arrayOrdenado[]=new int[arrayEnteros.length];
 		return arrayOrdenado;
+	}
+	
+	public static void imprimirTraza(String mensaje) {
+		if(DEPURACION == true) {
+			System.out.println("[TRAZA] " + mensaje);
+		}
 	}
 
 }
