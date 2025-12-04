@@ -1,11 +1,12 @@
 package arrays001;
 
 import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public abstract class Ejemplos {
 
-	public static boolean DEPURACION = true;
+	public static boolean DEPURACION = false; //Me sirve para probar codigo si esta en true.
 	/**
 	 * Genera un numero aleatorio entre le minimo y el maximo
 	 * @param minimo
@@ -133,6 +134,54 @@ public abstract class Ejemplos {
 	public static int[] ordenarArrayEnteros(int arrayEnteros[]) {
 		int arrayOrdenado[]=new int[arrayEnteros.length];
 		return arrayOrdenado;
+	}
+	
+	public static boolean estaOrdenadoAscendentemente(int array[]) {
+		//Arrays.sort(array); Esto lo ordenaría directamente.
+		boolean estaOrdenado = true;
+		for(int i = 0; i<array.length-1; i++) {
+			imprimirTraza("Comparando array["+ i + "] con array[" + (i + 1) + "]");
+			if(esMayor(array[i], array[i+1])) {
+				imprimirTraza(array[i] + " es mayor que " + array[i+1]);
+				estaOrdenado = false;
+				break;
+			}
+			if(estaOrdenado = false) {
+				int aux = array[i+1];
+				array[i+1] = array[i];
+				array[i] = aux;
+			}
+		}
+		return estaOrdenado;
+	}
+	
+	public static boolean estaOrdenadoDescendentemente(int array[]) {
+		boolean estaOrdenado = true;
+		for(int i = 0; i<array.length-1; i++) {
+			imprimirTraza("Comparando array["+ i + "] con array[" + (i + 1) + "]");
+			if(esMenor(array[i], array[i+1])) {
+				imprimirTraza(array[i] + " es menor que " + array[i+1]);
+				estaOrdenado = false;
+				break;
+			}
+		}
+		return estaOrdenado;
+	}
+	
+	public static boolean esMenor(int a, int b) {
+		if(a<b) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public static boolean esMayor(int a, int b) {
+		if(a>b) {
+			return true;
+		} else {
+				return false;
+		}
 	}
 	
 	public static void imprimirTraza(String mensaje) {
