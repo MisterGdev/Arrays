@@ -25,6 +25,28 @@ public abstract class Ejemplos {
 		 */
 		return (int)(Math.random()*(maximo-minimo)+minimo);
 	}
+	
+	public static boolean esMenor(int a, int b) {
+		if(a<b) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public static boolean esMayor(int a, int b) {
+		if(a>b) {
+			return true;
+		} else {
+				return false;
+		}
+	}
+	
+	public static void imprimirTraza(String mensaje) {
+		if(DEPURACION == true) {
+			System.out.println("[TRAZA] " + mensaje);
+		}
+	}
 
 	/**
 	 * Imprime un array de 4 posiciones.
@@ -131,6 +153,8 @@ public abstract class Ejemplos {
 		return existe;
 	}
 	
+	/*
+	HECHO EN CLASE:
 	public static int[] ordenarArrayEnteros(int arrayEnteros[]) {
 		int arrayOrdenado[]=new int[arrayEnteros.length];
 		return arrayOrdenado;
@@ -146,7 +170,7 @@ public abstract class Ejemplos {
 				estaOrdenado = false;
 				break;
 			}
-			if(estaOrdenado = false) {
+			if(estaOrdenado == false) {
 				int aux = array[i+1];
 				array[i+1] = array[i];
 				array[i] = aux;
@@ -154,7 +178,30 @@ public abstract class Ejemplos {
 		}
 		return estaOrdenado;
 	}
+	*/
 	
+	public static int[] ordenarArrayBurbuja(int[] array) {
+	    boolean intercambiado; //Variable de comprobacion para seguir el bucle.
+	    // Bucle del proceso
+	    do {
+	        intercambiado = false;
+	        // Recorremos el array
+	        for (int i = 0; i < array.length - 1; i++) {
+	            // Si el número actual es mayor que el siguiente, los intercambiamos
+	            if (array[i] > array[i + 1]) {
+	                //Ponemos el aux para hacer "swap"
+	                int aux = array[i];     // Guardamos el grande en aux
+	                array[i] = array[i+1];  // Movemos el pequeño a la izquierda
+	                array[i+1] = aux;       // Ponemos el aux (grande) a la derecha	                
+	                
+	                intercambiado = true;  
+	            }
+	        }
+	    } while (intercambiado == false);
+
+	    return array;
+	}
+
 	public static boolean estaOrdenadoDescendentemente(int array[]) {
 		boolean estaOrdenado = true;
 		for(int i = 0; i<array.length-1; i++) {
@@ -168,26 +215,50 @@ public abstract class Ejemplos {
 		return estaOrdenado;
 	}
 	
-	public static boolean esMenor(int a, int b) {
-		if(a<b) {
-			return true;
-		} else {
-			return false;
-		}
+	//MI INTENTO DE INSERTAR UN NUMERO Y QUE SE ORDENE:
+	public static int[] insertarNumeroArray(int insertado, int[] array) { 
+		boolean intercambiado = false;
+		int[] arrayFinal = array; 
+		int x = 0;
+		int y = 0;
+		x =  array.length;
+		y = array.length + 1;
+		//arrayFinal.length = y;
+		Ejemplos.ordenarArrayBurbuja(array);
+		do {
+			for(int i = 0; i < array.length - 1; i++) {
+				if ( insertado < array[i]) {
+					int aux = array[i];
+					array [i] = insertado;
+					array [i+1] = aux;
+					
+					intercambiado = true;
+				} else {
+					intercambiado = false;
+				}
+			}
+			
+		} while (/*arrayFinal == array  ||*/ intercambiado = false);
+		
+		return arrayFinal;		
 	}
 	
-	public static boolean esMayor(int a, int b) {
-		if(a>b) {
-			return true;
-		} else {
-				return false;
+	/*
+	 * Por hacer:
+	Devolver la suma de todos los elementos de un array.
+	Devolver la media aritmética de todos los elementos de un array.
+	Devolver la moda (el valor más repetido) de todos los elementos de un array.
+	Invertir un array (1,2,3 pasa a ser 3,2,1).
+	Devolver la varianza de los elementos de un array.
+	Eliminar todos los elementos repetidos de un array (1,2,2,3,4,4 pasa a ser 1,2,3,4.
+	Eliminar el elemento "i" de un array y "comprimirlo". Si al array 1,4,5,7 le quitamos el elemento 2, nos devolvería un array de 3 posiciones con el contenido 1,4,7.
+	El array "nombres" contiene una serie de nombres, y el array "edades", las edades correspondientes a esos nombres. Ordenar los dos arrays en función de la edad.
+	 */
+	public static int sumarElementos(int[] array) {
+		int x = 0;
+		for (int i = 0; i < array.length; i++) {
+		x = array[i] + array[i+1];	
 		}
+		return x; 
 	}
-	
-	public static void imprimirTraza(String mensaje) {
-		if(DEPURACION == true) {
-			System.out.println("[TRAZA] " + mensaje);
-		}
-	}
-
 }

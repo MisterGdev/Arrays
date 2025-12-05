@@ -1,12 +1,14 @@
 package arrays001;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Aplicacion {
 	
 
 	public Aplicacion() {
-		int opcion = -1;
+		Ejemplos.ordenarArrayBurbuja(null);
+		/*int opcion = -1;
 		do {
 			Scanner s = new Scanner(System.in);
 			System.out.println("Escoge una opción:");
@@ -42,8 +44,8 @@ public class Aplicacion {
 			}
 			
 		} while (opcion != 0);
+*/
 	}
-
 	public static void main(String[] args) {
 		Aplicacion a = new Aplicacion();
 
