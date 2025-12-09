@@ -254,11 +254,28 @@ public abstract class Ejemplos {
 	Eliminar el elemento "i" de un array y "comprimirlo". Si al array 1,4,5,7 le quitamos el elemento 2, nos devolvería un array de 3 posiciones con el contenido 1,4,7.
 	El array "nombres" contiene una serie de nombres, y el array "edades", las edades correspondientes a esos nombres. Ordenar los dos arrays en función de la edad.
 	 */
-	public static int sumarElementos(int[] array) {
+	public static int sumarElementos(int[] array) { //Devolver la suma de todos los elementos de un array.
 		int x = 0;
 		for (int i = 0; i < array.length; i++) {
 		x = array[i] + array[i+1];	
 		}
 		return x; 
+	}
+	
+	public static int mediaAritmetica(int[] array) { //Devolver la media aritmética de todos los elementos de un array.
+		int x = 0;
+		for (int i = 0; i < array.length; i++) {
+			x = array[i] + array[i + 1];
+		}
+		int y = x / array.length;
+		return y;
+	}
+	
+	public static int valorModa(int[] array) {
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] == array[i + 1]) {
+				
+			}
+		}	
 	}
 }
