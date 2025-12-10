@@ -273,9 +273,22 @@ public abstract class Ejemplos {
 	
 	public static int valorModa(int[] array) {
 		for (int i = 0; i < array.length; i++) {
-			if (array[i] == array[i + 1]) {
+			int x = array[i];
+			if (x == array[i + 1]) {
 				
 			}
-		}	
+		}
+		int x = 0;
+		return x;
 	}
+	
+	public static int[] invertirArray(int[] array) { //Invertir un array (1,2,3 pasa a ser 3,2,1).
+		int[] original = array;
+        int[] invertido = new int[original.length];
+
+        for (int i = 0; i < original.length; i++) {
+            // Asignamos desde el final del original al principio del nuevo
+            invertido[i] = original[original.length - 1 - i];
+        } return invertido;
+    }
 }

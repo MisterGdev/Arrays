@@ -7,7 +7,10 @@ public class Aplicacion {
 	
 
 	public Aplicacion() {
-		Ejemplos.ordenarArrayBurbuja(null);
+		int [] array = {1,2,3,4};
+		
+		Ejemplos.invertirArray(array);
+		//Ejemplos.ordenarArrayBurbuja(null);
 		/*int opcion = -1;
 		do {
 			Scanner s = new Scanner(System.in);
