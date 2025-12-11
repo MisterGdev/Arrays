@@ -269,17 +269,33 @@ public abstract class Ejemplos {
 		}
 		int y = x / array.length;
 		return y;
+		//return sumarElementos(array)/array.lenght.
 	}
 	
 	public static int valorModa(int[] array) {
+		int valorActual = 0;
+		int numeroRepeticionesActual = 0;
+		int numeroRepeticionesModa = 0;
+		int valorModa = 0;
 		for (int i = 0; i < array.length; i++) {
-			int x = array[i];
-			if (x == array[i + 1]) {
-				
+			valorActual = array[i];
+			for (int j = 0; j < array.length; j++) {
+				numeroRepeticionesActual++;
+			}
+			if(numeroRepeticionesActual < numeroRepeticionesModa) {
+				numeroRepeticionesModa = numeroRepeticionesActual;
+				valorModa = valorActual;
+			}
+		}
+		return valorModa;
+			/*Intento fallido:
+			 * int x = array[i];
+			 * 
+			if (x == array[i + 1]) {	
 			}
 		}
 		int x = 0;
-		return x;
+		return x;*/
 	}
 	
 	public static int[] invertirArray(int[] array) { //Invertir un array (1,2,3 pasa a ser 3,2,1).
@@ -291,4 +307,94 @@ public abstract class Ejemplos {
             invertido[i] = original[original.length - 1 - i];
         } return invertido;
     }
+	
+	public static void devolverCambio(double precio, double importePagado) { //Imprecisión del double
+		int BilleteQuinientos = 0;
+		int BilleteDoscientos = 0;
+		int BilleteCien = 0;
+		int BilleteCincuenta = 0;
+		int BilleteVeinte = 0;
+		int BilleteDiez = 0;
+		int BilleteCinco = 0;
+		int MonedaDos = 0;
+		int MonedaUno = 0;
+		int MonedaCincuentaCentimos = 0;
+		int MonedaVeinteCentimos = 0;
+		int MonedaDiezCentimos = 0;
+		int MonedaCincoCentimos = 0;
+		int MonedaDosCentimos = 0;
+		int MonedaUnCentimo = 0;
+		double valorIntermedio = importePagado - precio;
+		
+		while(valorIntermedio > 0) {
+			if(valorIntermedio >= 500) {
+				valorIntermedio = valorIntermedio - 500;
+				BilleteQuinientos++;
+			} else if(valorIntermedio >= 200) {
+				valorIntermedio = valorIntermedio - 200;
+				BilleteDoscientos ++;
+			} else if(valorIntermedio >= 100) {
+				valorIntermedio = valorIntermedio - 100;
+				BilleteCien++;
+			} else if(valorIntermedio >= 50) {
+				valorIntermedio = valorIntermedio - 50;
+				BilleteCincuenta++;
+			} else if(valorIntermedio >= 20) {
+				valorIntermedio = valorIntermedio - 20;
+				BilleteVeinte++;
+			} else if(valorIntermedio >= 10) {
+				valorIntermedio = valorIntermedio - 10;
+				BilleteDiez++;
+			} else if(valorIntermedio >= 5) {
+				valorIntermedio = valorIntermedio - 5;
+				BilleteCinco++;
+			} else if(valorIntermedio >= 2) {
+				valorIntermedio = valorIntermedio - 2;
+				MonedaDos++;
+			} else if(valorIntermedio >= 1) {
+				valorIntermedio = valorIntermedio - 1;
+				MonedaUno++;
+			} else if(valorIntermedio >= 0.5) {
+				valorIntermedio = valorIntermedio - 0.5;
+				MonedaCincuentaCentimos++;
+			} else if(valorIntermedio >= 0.2) {
+				valorIntermedio = valorIntermedio - 0.2;
+				MonedaVeinteCentimos++;
+			} else if(valorIntermedio >= 0.1) {
+				valorIntermedio = valorIntermedio - 0.1;
+				MonedaDiezCentimos++;
+			} else if(valorIntermedio >= 0.05) {
+				valorIntermedio = valorIntermedio - 0.05;
+				MonedaCincoCentimos++;
+			} else if(valorIntermedio >= 0.02) {
+				valorIntermedio = valorIntermedio - 0.02;
+				MonedaDosCentimos++;
+			} else if(valorIntermedio >= 0.01) {
+				valorIntermedio = valorIntermedio - 0.01;
+				MonedaUnCentimo++; 
+			}else {
+				System.out.println("El resultado es " + valorIntermedio);
+				System.out.println("El cambio es de " + BilleteQuinientos + " Billetes de 500€.");
+				System.out.println("El cambio es de " + BilleteDoscientos + " Billetes de 200€.");
+				System.out.println("El cambio es de " + BilleteCien + " Billetes de 100€.");
+				System.out.println("El cambio es de " + BilleteCincuenta + " Billetes de 50€.");
+				System.out.println("El cambio es de " + BilleteVeinte + " Billetes de 20€.");
+				System.out.println("El cambio es de " + BilleteDiez + " Billetes de 10€.");
+				System.out.println("El cambio es de " + BilleteCinco + " Billetes de 5€.");
+				System.out.println("El cambio es de " + MonedaDos + " Monedas de 2€.");
+				System.out.println("El cambio es de " + MonedaUno + " Monedas de 1€.");
+				System.out.println("El cambio es de " + MonedaCincuentaCentimos + " Monedas de 0.50€.");
+				System.out.println("El cambio es de " + MonedaVeinteCentimos + " Monedas de 0.20€.");
+				System.out.println("El cambio es de " + MonedaDiezCentimos + " Monedas de 0.10€.");
+				System.out.println("El cambio es de " + MonedaCincoCentimos + " Monedas de 0.05€.");
+				System.out.println("El cambio es de " + MonedaDosCentimos + " Monedas de 0.02€.");
+				System.out.println("El cambio es de " + MonedaUnCentimo + " Monedas de 0.01€.");
+				break;
+			}
+		}
+	}
+	
+	public static void devolverCambioArray(int precio, int importePagado) {
+		double[] array ={500,200,100,50,20,10,5,2,1};
+	}
 }

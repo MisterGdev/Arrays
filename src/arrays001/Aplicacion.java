@@ -7,9 +7,9 @@ public class Aplicacion {
 	
 
 	public Aplicacion() {
-		int [] array = {1,2,3,4};
-		
-		Ejemplos.invertirArray(array);
+		//int [] array = {1,2,3,4};
+		Ejemplos.devolverCambio(750.45, 1000);
+		//Ejemplos.invertirArray(array);
 		//Ejemplos.ordenarArrayBurbuja(null);
 		/*int opcion = -1;
 		do {
