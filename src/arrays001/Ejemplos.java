@@ -7,12 +7,6 @@ import java.util.Scanner;
 public abstract class Ejemplos {
 
 	public static boolean DEPURACION = false; //Me sirve para probar codigo si esta en true.
-	/**
-	 * Genera un numero aleatorio entre le minimo y el maximo
-	 * @param minimo
-	 * @param maximo
-	 * @return
-	 */
 	public static int generarNumeroAleatorio(int minimo, int maximo) {
 		/*
 		 * int resultadoFinal;
@@ -151,6 +145,17 @@ public abstract class Ejemplos {
 			}
 		}
 		return existe;
+	}
+	
+	public static String arrayEnterosToString(int arrayEnteros[]) {
+		String cadenaImprimir="{";
+		for(int i=0;i<arrayEnteros.length;i++) {
+			cadenaImprimir+=arrayEnteros[i];
+			if(i<arrayEnteros.length-1)
+				cadenaImprimir+=",";
+		}
+		cadenaImprimir+="}";
+		return cadenaImprimir;
 	}
 	
 	/*
@@ -308,6 +313,16 @@ public abstract class Ejemplos {
         } return invertido;
     }
 	
+	public static String[] voltearArray(String[] array) {		  
+		        // Recorremos el array
+		        for (int i = 0; i < array.length / 2; i++) {
+		        	String aux = array[i];
+		        	array[i] = array[array.length - 1 - i];
+		        	array[array.length - 1 - i] = aux;			                             		             
+		        }
+		        return array;		        
+		    }
+	
 	public static void devolverCambio(double precio, double importePagado) { //Imprecisión del double
 		int BilleteQuinientos = 0;
 		int BilleteDoscientos = 0;
@@ -394,7 +409,84 @@ public abstract class Ejemplos {
 		}
 	}
 	
-	public static void devolverCambioArray(int precio, int importePagado) {
-		double[] array ={500,200,100,50,20,10,5,2,1};
+	public static void devolverCambioArray(double precio, double importePagado) {
+	    // 1. Convertimos todo a céntimos (int) para evitar la imprecisión del double 
+	    int cambioEnCentimos = (int) Math.round((importePagado - precio) * 100);
+
+	    // 2. Definimos los arrays
+	    // Valores en céntimos: 500€ = 50000 céntimos
+	    int[] valores = {50000, 20000, 10000, 5000, 2000, 1000, 500, 200, 100, 50, 20, 10, 5, 2, 1};
+	    
+	    // Nombres para mostrar por pantalla
+	    String[] nombres = {
+	        "Billetes de 500€", "Billetes de 200€", "Billetes de 100€", "Billetes de 50€",
+	        "Billetes de 20€", "Billetes de 10€", "Billetes de 5€", "Monedas de 2€",
+	        "Monedas de 1€", "Monedas de 0.50€", "Monedas de 0.20€", "Monedas de 0.10€",
+	        "Monedas de 0.05€", "Monedas de 0.02€", "Monedas de 0.01€"
+	    };
+
+	    // 3. Imprimimos el cambio total inicial
+	    System.out.println("El cambio total a devolver es: " + (cambioEnCentimos / 100.0) + "€");
+
+	    // 4. El bucle:
+	    for (int i = 0; i < valores.length; i++) {
+	        if (cambioEnCentimos >= valores[i]) { // Si el cambio restante es mayor o igual al billete/moneda actual
+	            int cantidad = cambioEnCentimos / valores[i]; // Calculamos cuántos billetes/monedas de este tipo necesitamos
+	            cambioEnCentimos = cambioEnCentimos % valores[i]; // Restamos eso del cambio pendiente (usamos módulo para el resto)
+
+	            if (cantidad > 0) { // Solo imprimimos si hay cantidad para devolver (no ha pagado justo)
+	                System.out.println("El cambio es de " + cantidad + " " + nombres[i] + ".");
+	            }
+	        }
+	    }
+	}
+
+	public static int[] eliminarDuplicados(int[] arrayOriginal) {
+	        // 1. Si el array está vacío o tiene 1 elemento, se devuelve tal cual
+	        if (arrayOriginal.length < 2) {
+	            return arrayOriginal;
+	        }
+
+	        // 2. Necesitamos un array temporal porque no sabemos el tamaño final todavía
+	        int[] temporal = new int[arrayOriginal.length];
+	        int j = 0; // Este índice controlará la posición en el nuevo array
+
+	        // 3. Recorremos el array original
+	        for (int i = 0; i < arrayOriginal.length - 1; i++) {	            
+	            if (arrayOriginal[i] != arrayOriginal[i + 1]) { // Comparamos el actual con el siguiente
+	                temporal[j] = arrayOriginal[i]; // Guardamos el número
+	                j++; // Avanzamos el índice del nuevo array
+	            }
+	        }
+
+	        // 4. El bucle anterior siempre se deja el último elemento sin guardar, lo añadimos manual
+	        temporal[j] = arrayOriginal[arrayOriginal.length - 1];
+	        j++; // Ahora 'j' es igual al número total de elementos únicos
+
+	        // 5. "Recortamos" el array para quitar los ceros sobrantes del final
+	        // Usamos Arrays.copyOf para crear el array final del tamaño exacto 'j'
+	        return Arrays.copyOf(temporal, j);
+	        
+	}
+	
+	public static boolean estaComprimido(String[] array) {
+		for (int i = 0; i < array.length - 1; i++) {
+			if(array[i] == null && array[i + 1] != null) {
+					return false;
+			}
+		}
+		return true;
+	}
+	
+	public static String[] comprimirArray(String[] array) {
+		while (!estaComprimido(array)) {
+			for(int i = 0; i < array.length - 1; i++) {
+				if(array[i] == null) {
+					array[i] = array[i + 1];
+					array[i + 1] = null;
+				}
+			}
+		}
+		return array; 
 	}
 }

@@ -7,8 +7,14 @@ public class Aplicacion {
 	
 
 	public Aplicacion() {
-		//int [] array = {1,2,3,4};
-		Ejemplos.devolverCambio(750.45, 1000);
+		String[] arrayS = {"D","", null, "C", "B", "A"};
+		Ejemplos.comprimirArray(arrayS);
+		//int [] array = {1,2,3,4,3,3,5,7,6,33,4,4,5,7,6};
+		//System.out.println(Ejemplos.voltearArray(arrayS));
+		//Ejemplos.imprimirArrayStringInverso(arrayS);
+		//System.out.println(Ejemplos.eliminarDuplicados(array));
+		//Ejemplos.devolverCambioArray(30.23 , 51);
+		//Ejemplos.devolverCambio(750.45, 1000);
 		//Ejemplos.invertirArray(array);
 		//Ejemplos.ordenarArrayBurbuja(null);
 		/*int opcion = -1;
