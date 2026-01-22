@@ -521,4 +521,31 @@ public abstract class Ejemplos {
 			System.out.println("ERROR");
 		}*/
 	}
+	
+	public static int buscar(int valorBuscado, int[] array) {
+		for(int i = 0; i < array.length; i++) {
+			if(array[i] == valorBuscado)
+				return array[i];
+		}
+		return -1;
+	}
+	
+	public static int busquedaBinaria(int valorBuscado, int[] array) {
+		int[] a = {1,3,4,6,8,9,11,15,18,20,25,31,45,54,63,78};
+		array = a;
+		System.out.println(System.currentTimeMillis());
+		for(int i = 0; i < 10000; i++)
+			for(int j = 0; j < 10000; j++)
+				for(int k = 0; k < 10000; k++)
+		
+		if((array.length/2) == valorBuscado) {
+			System.out.println("¡Enhorabuena, has adivinado");
+		} else if((array.length/2) > valorBuscado) {
+			System.out.println("El número es mayor del que has dicho, prueba otra vez");
+		} else if((array.length/2) < valorBuscado) {
+			System.out.println("El número es menor del que has dicho, prueba otra vez");
+		}
+		return -1;
+		
+	}
 }
