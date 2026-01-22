@@ -7,8 +7,11 @@ public class Aplicacion {
 	
 
 	public Aplicacion() {
+		double[] dobles = {7,3,5,8,2};
+		Ejemplos.media(dobles);
+		Ejemplos.varianza(dobles);
 		String[] arrayS = {"D","", null, "C", "B", "A"};
-		Ejemplos.comprimirArray(arrayS);
+		//Ejemplos.comprimirArray(arrayS);
 		//int [] array = {1,2,3,4,3,3,5,7,6,33,4,4,5,7,6};
 		//System.out.println(Ejemplos.voltearArray(arrayS));
 		//Ejemplos.imprimirArrayStringInverso(arrayS);

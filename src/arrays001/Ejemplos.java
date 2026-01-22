@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public abstract class Ejemplos {
 
-	public static boolean DEPURACION = false; //Me sirve para probar codigo si esta en true.
+	public static boolean DEPURACION = true; //Me sirve para probar codigo si esta en true.
 	public static int generarNumeroAleatorio(int minimo, int maximo) {
 		/*
 		 * int resultadoFinal;
@@ -410,7 +410,7 @@ public abstract class Ejemplos {
 	}
 	
 	public static void devolverCambioArray(double precio, double importePagado) {
-	    // 1. Convertimos todo a céntimos (int) para evitar la imprecisión del double 
+	    // 1. Convertimos todo a céntimos (int) para evitar la imprecisión del double. 
 	    int cambioEnCentimos = (int) Math.round((importePagado - precio) * 100);
 
 	    // 2. Definimos los arrays
@@ -434,7 +434,7 @@ public abstract class Ejemplos {
 	            int cantidad = cambioEnCentimos / valores[i]; // Calculamos cuántos billetes/monedas de este tipo necesitamos
 	            cambioEnCentimos = cambioEnCentimos % valores[i]; // Restamos eso del cambio pendiente (usamos módulo para el resto)
 
-	            if (cantidad > 0) { // Solo imprimimos si hay cantidad para devolver (no ha pagado justo)
+	            if (cantidad > 0) { // Solo imprimimos si hay cantidad para devolver (si no ha pagado justo)
 	                System.out.println("El cambio es de " + cantidad + " " + nombres[i] + ".");
 	            }
 	        }
@@ -488,5 +488,37 @@ public abstract class Ejemplos {
 			}
 		}
 		return array; 
+	}
+	
+	/* Varianza de {7 3 5 8 2} (7-5)^2 + (3-5)^2 + (5-5)^2 + (8-5)^2 (2-5)^2 /Todo DIVIDIDO entre 5
+	 * 
+	 */
+	
+	public static double varianza (double[] array) { //Referimos al de media.
+		imprimirTraza("Calculando la media");
+		double media = media(array);
+		double varianza = 0;
+		double auxiliar = 0;
+		for(int i = 0; i < array.length; i++) {
+			auxiliar +=  Math.pow((array[i] - media),2.0);
+		}
+		varianza = auxiliar/media;
+		imprimirTraza("Varianza= " + varianza);
+		return varianza;
+	}
+	public static double media(double[] array) {
+		double media = 0;
+		for(int i = 0; i < array.length; i++) {
+			media+=array[i]; // media = media + enteros[i];
+		}
+		media = media/array.length;
+		
+		return media;
+	}
+	
+	public static void eliminarString(String[]array, int indice) {
+		/*if(indice < array.length) {
+			System.out.println("ERROR");
+		}*/
 	}
 }
